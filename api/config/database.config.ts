@@ -1,5 +1,6 @@
 import mongoose, { Mongoose, MongooseOptions } from "mongoose";
 import config from "config";
+import logger from "../common/utils/logger.utils";
 
 class DB {
   configOptions: MongooseOptions;
@@ -16,10 +17,10 @@ class DB {
     this.mongoose
       .connect(this.dbUri)
       .then(() => {
-        console.log("connection Success");
+        logger.info("connection Success");
       })
       .catch((err) => {
-        console.log(err);
+        logger.warn(err);
       });
   }
 }
